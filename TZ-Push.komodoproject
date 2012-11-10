@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="c4def9d6-ff1a-4ae6-b1de-f9f699cc8ab8" kpf_version="5" name="TZ-Push.komodoproject">
+<preference-set idref="c4def9d6-ff1a-4ae6-b1de-f9f699cc8ab8">
+  <boolean id="configured">1</boolean>
+  <string id="koextgen.target">firefox</string>
+</preference-set>
+</project>
