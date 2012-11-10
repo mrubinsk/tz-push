@@ -1,0 +1,6 @@
+
+content tzpush content/
+
+
+
+overlay chrome://messenger/content/messenger.xul chrome://tzpush/content/tzpush_extension_overlay.xul
