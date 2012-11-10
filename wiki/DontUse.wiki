@@ -1,0 +1,11 @@
+Fist Committ
+
+= Introduction =
+
+This upload was to test svn which i have not used before.
+Feel free to look at the code.
+
+
+= Details =
+
+Main code alpha 0.1 within 48 hours.
