@@ -4,6 +4,8 @@ Fist Committ
 
 This upload was to test svn which i have not used before.
 Feel free to look at the code.
+It will pull contacts from z-push. But that's about all.
+Full 2-way to follow
 
 
 = Details =
