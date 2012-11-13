@@ -1,0 +1,11 @@
+Installation.
+
+= Introduction =
+
+Download tzpush.zip, unzip and install xpi
+
+
+= Details =
+
+Works for me. But at the moment I suggest just testing.
+Create new user/profile?
