@@ -1,0 +1,17 @@
+Plugin for Thunderbird to Sync Adressbook with Z-Push
+
+= Introduction =
+
+Plugin for Thunderbird to Sync Adressbook with Z-Push.(Zentyal/Zarafa).
+Please test.
+At the moment it will get address book from server and upload Thunderbird address book to server. 
+I am using loose provisioning on server. See http://www.zarafa.com/wiki/index.php/Z-Push_Provisioning
+Also the default for Z-push on Zentyal seems to be http, so this is set in my plugin.
+Please test https://.
+
+
+= Details =
+
+It has no conflict resolution. Best to start with an empty address book at either end.
+Will pass deleted address cards from server to Thunderbird but not in the other direction.
+Will not yet pass modification to cards either way. (Should be soon)
