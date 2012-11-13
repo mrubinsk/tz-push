@@ -8,6 +8,6 @@ var tzpush = {
   },
   
   onSync: function() {
-    recieve();
+    go();
   }
 };
