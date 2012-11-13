@@ -124,7 +124,7 @@ prefs.setCharPref("synckey",synckey)
 abManager = Components.classes["@mozilla.org/abmanager;1"]
 		.getService(Components.interfaces.nsIAbManager);
 addressBook = abManager.getDirectory("moz-abmdbdirectory://abook.mab");
-alert("about to start")
+//alert("about to start")
 // CodePage = Code[0]
 var stack = new Array();
 num = 4
@@ -295,13 +295,13 @@ wbxml = wbxmlouter.replace('replacehere',wbxmlinner)
 wbxml = wbxml.replace('SyncKeyReplace',synckey)
 wbxml = wbxml.replace('Id2Replace',folderID)
 
-alert(numofcards)
+//alert(numofcards)
 
-xml = toxml(wbxml)
-alert(xml)
+//xml = toxml(wbxml)
+//alert(xml)
 //wbxml = Send()
-xml = toxml(wbxml)
-alert(xml)
+//xml = toxml(wbxml)
+//alert(xml)
 
 cId = String.fromCharCode(0x4c,0x03) // 0x0C:'<ClientId>', 
 sId = String.fromCharCode(0x4d,0x03) // 0x0D:'<ServerId>'
@@ -310,18 +310,18 @@ for (var i=0; i<numofcards; i++){
 start = wbxml.indexOf(cId,start)
 end = wbxml.indexOf(String.fromCharCode(0x00),start)
 ClientId = wbxml.substring(start + 2,end)
-alert('ClientId = ' + ClientId)
+//alert('ClientId = ' + ClientId)
 start = wbxml.indexOf(sId,end)
 end = wbxml.indexOf(String.fromCharCode(0x00),start)
 ServerId = wbxml.substring(start +2,end)
-alert('ServerId = ' +  ServerId)
-alert(start + ' ' + end)
+//alert('ServerId = ' +  ServerId)
+//alert(start + ' ' + end)
 addressBook = abManager.getDirectory("moz-abmdbdirectory://abook.mab");
 cards = addressBook.childCards;
 while (cards.hasMoreElements()) {
 card = cards.getNext()
 if (card instanceof Components.interfaces.nsIAbCard){
-alert(card.localId)
+//alert(card.localId)
 if (card.localId === ClientId){ 
 card.setProperty('ServerId', 'ServerId')
 addressBook.modifyCard(card)
@@ -342,10 +342,12 @@ synckey = prefs.getCharPref("synckey")
 if (synckey == ''){
     GetFolderId()
     Addressbook()
+    fromzpush()
 }
-else {Addressbook()}
+else {Addressbook()
+	fromzpush()}
 
 
 
-alert('DONE')
+//alert('DONE')
 }
