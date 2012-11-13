@@ -6,7 +6,7 @@ Download tzpush.zip, unzip and install xpi
 Configuration and Sync button are under tools menu.
 Enter Server address and password.
 SyncKey and FolderId boxes are for information only.
-Will hide password, and add to Thunderbird password soon
+Will hide password, and add to Thunderbird password soon.
 
 
 = Details =
