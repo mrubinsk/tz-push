@@ -48,7 +48,7 @@ function GetFolderId()
 {
 command = 'FolderSync'
 wbxml = String.fromCharCode(0x03,0x01,0x6a,0x00,0x00,0x07,0x56,0x52,0x03,0x30,0x00,0x01,0x01)
-var request = new XMLHttpRequest();
+//var request = new XMLHttpRequest();
 
 
 wbxml = Send()
@@ -299,7 +299,7 @@ wbxml = wbxml.replace('Id2Replace',folderID)
 
 //xml = toxml(wbxml)
 //alert(xml)
-//wbxml = Send()
+wbxml = Send()
 //xml = toxml(wbxml)
 //alert(xml)
 
@@ -327,7 +327,8 @@ card.setProperty('ServerId', 'ServerId')
 addressBook.modifyCard(card)
 }}}
 }
-}}
+}
+prefs.setCharPref("synckey",synckey) }
 
 var prefs = Components.classes["@mozilla.org/preferences-service;1"]
 			.getService(Components.interfaces.nsIPrefService);
@@ -347,7 +348,10 @@ if (synckey == ''){
 else {Addressbook()
 	fromzpush()}
 
-
-
-//alert('DONE')
+synckey = FindKey(wbxml)
+//prefs.setCharPref("synckey",synckey)
+//new Date()
+LastSyncTime = Date.now()
+prefs.setCharPref("LastSyncTime",LastSyncTime)
+alert(LastSyncTime)
 }
