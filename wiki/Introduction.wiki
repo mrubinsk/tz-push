@@ -14,4 +14,6 @@ Please test https://.
 
 It has no conflict resolution. Best to start with an empty address book at either end.
 
+Will delete card from Thunderbird if deleted from Server, but will not pass delete from Thunderbird to Server.
+
 Will not yet pass modification to cards either way. (Should be soon)
