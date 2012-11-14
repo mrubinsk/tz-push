@@ -2,7 +2,7 @@ Installation.
 
 = Introduction =
 
-I uploaded an old non-working xpi. It has been removed. Will upload new one soon.
+*bold* I uploaded an old non-working xpi. It has been removed. Will upload new one soon.
 
 Download tzpush.zip, unzip and install xpi
 Configuration and Sync button are under tools menu.
