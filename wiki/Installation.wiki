@@ -4,7 +4,7 @@ Installation.
 
 *I have Tested in Linux(Gentoo) and Windows 7*
 
-Download tzpush.zip, unzip and install xpi
+Download tzpush.zip, unzip and install xpi.
 Configuration and Sync button are under tools menu.
 Enter Server address and password.
 SyncKey and FolderId boxes are for information only.
