@@ -2,7 +2,7 @@ Installation.
 
 = Introduction =
 
-*I uploaded an old non-working xpi. It has been removed. Will upload new one soon.*
+*I have Tested in Linux(Gentoo) and Windows 7*
 
 Download tzpush.zip, unzip and install xpi
 Configuration and Sync button are under tools menu.
