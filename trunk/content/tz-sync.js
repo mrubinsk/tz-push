@@ -353,5 +353,5 @@ synckey = FindKey(wbxml)
 //new Date()
 LastSyncTime = Date.now()
 prefs.setCharPref("LastSyncTime",LastSyncTime)
-alert(LastSyncTime)
+// alert(LastSyncTime)
 }
