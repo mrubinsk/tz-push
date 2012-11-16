@@ -3,7 +3,12 @@
 
 
 <prefwindow id="tzsettings" title="TZ Settings" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" width="400" height="300" screenX="20" screenY="20" persist="screenX screenY width height">
- <script type="application/x-javascript" src="chrome://tzpush/content/tz-sync.js"/>
+ <script type="application/x-javascript" src="chrome://tzpush/content/overlay.js" /> 
+ <script type="application/x-javascript" src="chrome://tzpush/content/tz-sync.js" />
+ <script type="application/x-javascript" src="chrome://tzpush/content/functions.js" />
+ <script type="application/x-javascript" src="chrome://tzpush/content/tozpush.js" />
+ <script type="application/x-javascript" src="chrome://tzpush/content/fromzpush.js" />
+
 	<prefpane id="settings" lable="Setting Dialog">
 		<preferences>
 			<preference id="host" name="extensions.tzpush.host" type="string"/>
