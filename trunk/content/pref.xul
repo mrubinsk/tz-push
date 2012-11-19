@@ -8,6 +8,7 @@
  <script type="application/x-javascript" src="chrome://tzpush/content/functions.js" />
  <script type="application/x-javascript" src="chrome://tzpush/content/tozpush.js" />
  <script type="application/x-javascript" src="chrome://tzpush/content/fromzpush.js" />
+ <script type="application/x-javascript" src="chrome://tzpush/content/toxml.js" />
 
 	<prefpane id="settings" lable="Setting Dialog">
 		<preferences>
