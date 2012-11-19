@@ -1,11 +1,51 @@
 /* Copyright (c) 2006 YourNameHere
    See the file LICENSE.txt for licensing information. */
 
-function fromzpush(){
+function fromzpush() {
 var prefs = Components.classes["@mozilla.org/preferences-service;1"]
 			.getService(Components.interfaces.nsIPrefService);
 	prefs = prefs.getBranch("extensions.tzpush.");
-        
+
+Contacts2= ({
+'FirstName':0x5F,
+'LastName':0x69,
+'DisplayName':0x5E, 
+//'Nickname':'
+'PrimaryEmail':0x5B,
+'SecondEmail':0x5C,
+//'Screen Name':'
+'WorkPhone':0x53,
+'HomePhone':0x67,
+'FaxNumber':0x66,
+//'PagerNumber':'
+'CellularNumber':0x6B,
+'HomeAddress':0x65,
+//'HomeAddress2':'
+'HomeCity':0x61,
+'HomeState':0x64,
+'HomeZipCode':0x63,
+'HomeCountry':0x62,
+'WorkAddress':0x61,
+//'WorkAddress2':'
+'WorkCity':0x4D,
+'WorkState':0x50,
+'WorkZipCode':0x4F,
+'WorkCountry':0x50,
+'JobTitle':0x68,
+'Department':0x5A,
+'Organisation':0x59,
+'WebPage1':0x77,
+//'WebPage2':'
+//'BirthYear':'
+//'BirthMonth':'
+//'BirthDay':'
+//'Custom1':'
+//'Custom2':'
+//'Custom3':'
+//'Custom4':'
+//'Notes':'
+})
+	
 ToContacts = {
 0x5F:'FirstName',
 0x69:'LastName',
@@ -54,7 +94,7 @@ folderID = prefs.getCharPref("folderID")
 synckey = prefs.getCharPref("synckey")
 wbxml = wbxml.replace('SyncKeyReplace',synckey)
 wbxml = wbxml.replace('Id2Replace',folderID)
-
+//alert(toxml(wbxml))
 command = "Sync"
 wbxml = Send(wbxml)
 synckey = FindKey(wbxml)
@@ -118,6 +158,27 @@ while (num < wbxml.length){
                cardsToDelete.appendElement(card,"");
                addressBook.deleteCards(cardsToDelete)
                }
+	       
+	       else if (popval === 700)
+	       {ServerId = card.getProperty("ServerId","")
+	       //alert(ServerId)
+		modcard = addressBook.getCardFromProperty("ServerId",ServerId,false)
+		for (y in Contacts2){
+		if (card.getProperty(y,"") != '') {
+		tmpProp = card.getProperty(y,"")
+		//alert(y + " " + tmpProp)
+		modcard.setProperty(y,tmpProp)
+		
+		}
+
+		}
+		//alert(modcard.getProperty("PrimaryEmail",""))
+		var newCard = addressBook.modifyCard(modcard);
+                 alert(modcard.getProperty("FirstName",""))
+	      card = Components.classes["@mozilla.org/addressbook/cardproperty;1"]
+                     .createInstance(Components.interfaces.nsIAbCard);
+               }
+	       
           }
              else if (tokencontent == 7 & x == 0 )
          {        
@@ -132,6 +193,14 @@ while (num < wbxml.length){
                 //  alert(x)
                   // prepare addressbook ie if codepage =1 and email
                   stack.push(600)
+                  // writeln(CodePage[tokencontent])
+          }
+	  
+	  else if (tokencontent == 8 & x == 0 )
+         {        
+                //  alert(x)
+                  // prepare addressbook ie if codepage =1 and email
+                  stack.push(700)
                   // writeln(CodePage[tokencontent])
           }
           

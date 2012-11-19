@@ -29,6 +29,7 @@ return synckey
 
 function Send(wbxml)
 {
+// alert(toxml(wbxml))  
 var req = new XMLHttpRequest(); 
 	req.mozBackgroundRequest = true; 
 	req.open("POST", SERVER +'?Cmd=' + command +'&User='+ USER +'&DeviceId=TZ-PUSH', false);
@@ -40,6 +41,7 @@ var req = new XMLHttpRequest();
 	req.setRequestHeader("Content-Length", wbxml.length);
         req.sendAsBinary(wbxml);
         wbxml = req.responseText;
+//        alert(toxml(wbxml))
         return wbxml;
 }
 
