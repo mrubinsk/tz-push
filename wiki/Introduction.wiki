@@ -16,4 +16,6 @@ It has no conflict resolution. Best to start with an empty address book at eithe
 
 Will delete card from Thunderbird if deleted from Server, but will not pass delete from Thunderbird to Server.
 
-Will not yet pass modification to cards either way. (Should be soon)
+Now will pass modification on cards from Server to Z-push.
+
+Will not yet pass modification to cards from Thunderbird to Z-Push. (Should be soon)
