@@ -93,8 +93,11 @@ wbxml = wbxml.replace('Id2Replace',folderID)
 //xml = toxml(wbxml)
 //alert(xml)
 wbxml = Send(wbxml)
-//xml = toxml(wbxml)
-//alert(xml)
+synckey = FindKey(wbxml)
+prefs.setCharPref("synckey",synckey)
+xml = toxml(wbxml)
+
+alert(xml)
 
 cId = String.fromCharCode(0x4c,0x03) // 0x0C:'<ClientId>', 
 sId = String.fromCharCode(0x4d,0x03) // 0x0D:'<ServerId>'
@@ -120,5 +123,8 @@ card.setProperty('ServerId', ServerId)
 addressBook.modifyCard(card)
 }}}
 }
+
 }
-prefs.setCharPref("synckey",synckey) }
+//synckey = FindKey(wbxml)
+//alert(toxml(wbxml))
+}

@@ -174,7 +174,7 @@ while (num < wbxml.length){
 		}
 		//alert(modcard.getProperty("PrimaryEmail",""))
 		var newCard = addressBook.modifyCard(modcard);
-                 alert(modcard.getProperty("FirstName",""))
+                // alert(modcard.getProperty("FirstName",""))
 	      card = Components.classes["@mozilla.org/addressbook/cardproperty;1"]
                      .createInstance(Components.interfaces.nsIAbCard);
                }
