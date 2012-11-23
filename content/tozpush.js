@@ -6,6 +6,7 @@ function tozpush()
 var prefs = Components.classes["@mozilla.org/preferences-service;1"]
 			.getService(Components.interfaces.nsIPrefService);
 	prefs = prefs.getBranch("extensions.tzpush.");
+time = prefs.getCharPref("LastSyncTime") / 1000	
         
 wbxmlouter = String.fromCharCode(0x03,0x01,0x6A,0x00,0x45,0x5C,0x4F,0x50,0x03,0x43,0x6F,0x6E,0x74,0x61,0x63,0x74,0x73,0x00,0x01,0x4B,0x03,0x53,0x79,0x6E,0x63,0x4B,0x65,0x79,0x52,0x65,0x70,0x6C,0x61,0x63,0x65,0x00,0x01,0x52,0x03,0x49,0x64,0x32,0x52,0x65,0x70,0x6C,0x61,0x63,0x65,0x00,0x01,0x57,0x5B,0x03,0x31,0x00,0x01,0x62,0x03,0x30,0x00,0x01,0x01,0x56,0x72,0x65,0x70,0x6C,0x61,0x63,0x65,0x68,0x65,0x72,0x65,0x01,0x01,0x01,0x01)
 Contacts2= ({
@@ -65,11 +66,7 @@ numofcards = numofcards + 1
 wbxml = wbxml + String.fromCharCode(0x47,0x4C,0x03) + card.localId + String.fromCharCode(0x00,0x01,0x5D,0x00,0x01)
 for (x in Contacts2){
      if (card.getProperty(x,"") != '') {
-// alert(card.getProperty(x,''))
-// alert(Contacts2[x])
-// alert(card.localId)
-// alert(card.directoryId)
-// alert(card.uuid)
+ 
 wbxml = wbxml + String.fromCharCode(Contacts2[x]) + String.fromCharCode(0x03) + card.getProperty(x,'') +String.fromCharCode(0x00,0x01)
 }
 
@@ -78,6 +75,28 @@ wbxml = wbxml + String.fromCharCode(Contacts2[x]) + String.fromCharCode(0x03) + 
 cardArr.push(card) 
 
 
+wbxml = wbxml + String.fromCharCode(0x01,0x01,0x00,0x00)
+}
+}
+
+newcards = numofcards }
+cards = addressBook.childCards;
+while (cards.hasMoreElements()) {
+card = cards.getNext()
+if (card instanceof Components.interfaces.nsIAbCard){
+if (card.getProperty("LastModifiedDate","") > time ) {
+numofcards = numofcards + 1     
+name = card.getProperty("FirstName","")
+// alert(name + " " +card.getProperty("LastModifiedDate",""))
+ 
+wbxml = wbxml + String.fromCharCode(0x48,0x4D,0x03) + card.getProperty("ServerId","") + String.fromCharCode(0x00,0x01,0x5D,0x00,0x01)
+for (x in Contacts2){
+     if (card.getProperty(x,"") != '') {
+
+wbxml = wbxml + String.fromCharCode(Contacts2[x]) + String.fromCharCode(0x03) + card.getProperty(x,'') +String.fromCharCode(0x00,0x01)
+}
+
+}
 wbxml = wbxml + String.fromCharCode(0x01,0x01,0x00,0x00)
 }
 }
@@ -95,14 +114,13 @@ wbxml = wbxml.replace('Id2Replace',folderID)
 wbxml = Send(wbxml)
 synckey = FindKey(wbxml)
 prefs.setCharPref("synckey",synckey)
-xml = toxml(wbxml)
-
-alert(xml)
+//xml = toxml(wbxml)
+//alert(xml)
 
 cId = String.fromCharCode(0x4c,0x03) // 0x0C:'<ClientId>', 
 sId = String.fromCharCode(0x4d,0x03) // 0x0D:'<ServerId>'
 start = 0
-for (var i=0; i<numofcards; i++){
+for (var i=0; i< newcards; i++){
 start = wbxml.indexOf(cId,start)
 end = wbxml.indexOf(String.fromCharCode(0x00),start)
 ClientId = wbxml.substring(start + 2,end)
