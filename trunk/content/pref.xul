@@ -25,7 +25,7 @@
 			<label control="userbox" value="User Name: "/>
 			<textbox preference="user" id="userbox"/>
 			<label control="passbox" value="Password: "/>
-			<textbox preference="password" id="passbox"/>
+			<textbox preference="password" id="passbox" type="password"/>
 			<label control="syncbox" value="Sync Key"/>
 			<textbox preference="synckey" id="syncbox"/>
                         <label control="folderbox" value="FolderID"/>
