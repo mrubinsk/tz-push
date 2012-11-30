@@ -7,7 +7,9 @@ var prefs = Components.classes["@mozilla.org/preferences-service;1"]
 host = prefs.getCharPref("host")
 USER = prefs.getCharPref("user")
 PASSWORD = prefs.getCharPref("password")
-SERVER = "http://" + host + "/Microsoft-Server-ActiveSync"
+SSL = prefs.getBoolPref("https")
+if (SSL == true){SERVER = "https://" + host + "/Microsoft-Server-ActiveSync"}
+else{SERVER = "http://" + host + "/Microsoft-Server-ActiveSync"}
 deviceType = 'Thunderbird'
 synckey = prefs.getCharPref("synckey")
 if (synckey == '')
