@@ -12,7 +12,7 @@ On Windows machines you need to press OK before first sync.
 
 SyncKey and FolderId boxes are for information only.
 
-Will hide password, and add to Thunderbird password soon.
+
 
 
 = Details =
