@@ -3,7 +3,7 @@ function go() {
 var prefs = Components.classes["@mozilla.org/preferences-service;1"]
 			.getService(Components.interfaces.nsIPrefService);
 	prefs = prefs.getBranch("extensions.tzpush.");
-        
+addressUrl = prefs.getCharPref("abname")      
 host = prefs.getCharPref("host")
 USER = prefs.getCharPref("user")
 PASSWORD = prefs.getCharPref("password")

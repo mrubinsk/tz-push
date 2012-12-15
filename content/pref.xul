@@ -3,14 +3,9 @@
 
 
 <prefwindow id="tzsettings" title="TZ Settings" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" width="400" height="300" screenX="20" screenY="20" persist="screenX screenY width height">
- <script type="application/x-javascript" src="chrome://tzpush/content/overlay.js" /> 
- <script type="application/x-javascript" src="chrome://tzpush/content/tz-sync.js" />
- <script type="application/x-javascript" src="chrome://tzpush/content/functions.js" />
- <script type="application/x-javascript" src="chrome://tzpush/content/tozpush.js" />
- <script type="application/x-javascript" src="chrome://tzpush/content/fromzpush.js" />
- <script type="application/x-javascript" src="chrome://tzpush/content/toxml.js" />
 
-	<prefpane id="settings" lable="Setting Dialog">
+
+	<prefpane id="settings" label="Setting Dialog">
 		<preferences>
 			<preference id="host" name="extensions.tzpush.host" type="string"/>
 			<preference id="password" name="extensions.tzpush.password" type="string"/>
@@ -19,9 +14,9 @@
 			<preference id="user" name="extensions.tzpush.user" type="string"/>
 			<preference id="deviceID" name="extensions.tzpush.deviceId" type="string"/>
 			<preference id="https" name="extensions.tzpush.https" type="bool"/>
-		</preferences>
+			</preferences>
 		<vbox align="center">
-			<label control="hostbox" value="Server Address: "/>
+                        <label control="hostbox" value="Server Address: "/>
 			<textbox preference="host" id="hostbox"/>
 			<checkbox label="Use https://" preference="https" checked="false"/>
 			<label control="userbox" value="User Name: "/>
@@ -34,5 +29,30 @@
 			<textbox preference="folderID" id="folderbox"/>
 			<button label="Sync Adddressbook" id="syncbut" onclick="go();"/>
 		</vbox>
+
+		
+
 	</prefpane>
+         <script type="application/x-javascript" src="chrome://tzpush/content/functions.js" />
+        <prefpane id="PrefAddressBook" label="AddressBook Options">
+            
+	<preferences>
+	<preference id="contactsLocalFolderPref" name="extensions.tzpush.abname" type="string"/>
+	</preferences>
+	<vbox>
+		<groupbox>
+			<caption label="Local Address Book" />
+	<listbox id="localContactsFolder" rows="3" onselect="prefs.setCharPref('abname',this.value),localAbs()"></listbox>
+			
+		</groupbox>
+		
+	</vbox>
+  </prefpane>
+ <script> localAbs()</script>     
+ <script type="application/x-javascript" src="chrome://tzpush/content/overlay.js" /> 
+ <script type="application/x-javascript" src="chrome://tzpush/content/tz-sync.js" />
+
+ <script type="application/x-javascript" src="chrome://tzpush/content/tozpush.js" />
+ <script type="application/x-javascript" src="chrome://tzpush/content/fromzpush.js" />
+ <script type="application/x-javascript" src="chrome://tzpush/content/toxml.js" />
 </prefwindow>
