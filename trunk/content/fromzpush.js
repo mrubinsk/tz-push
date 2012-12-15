@@ -102,7 +102,7 @@ prefs.setCharPref("synckey",synckey)
 
 abManager = Components.classes["@mozilla.org/abmanager;1"]
 		.getService(Components.interfaces.nsIAbManager);
-addressBook = abManager.getDirectory("moz-abmdbdirectory://abook.mab");
+addressBook = abManager.getDirectory(addressUrl);
 //alert("about to start")
 // CodePage = Code[0]
 var stack = new Array();

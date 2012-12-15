@@ -27,6 +27,7 @@ return synckey
 
 }
 
+
 function Send(wbxml)
 {
 // alert(toxml(wbxml))  
@@ -68,4 +69,29 @@ prefs.setCharPref("synckey",synckey)
 prefs.setCharPref("folderID", folderID)
 }
 
-
+function localAbs() {
+    var prefs = Components.classes["@mozilla.org/preferences-service;1"]
+			.getService(Components.interfaces.nsIPrefService);
+	prefs = prefs.getBranch("extensions.tzpush.");  
+	while (document.getElementById('localContactsFolder').children.length > 0)
+		document.getElementById('localContactsFolder').removeChild(document.getElementById('localContactsFolder').firstChild);
+	let abManager = Components.classes["@mozilla.org/abmanager;1"] 
+		.getService(Components.interfaces.nsIAbManager);
+	let allAddressBooks = abManager.directories;
+	while (allAddressBooks.hasMoreElements()) {  
+		let addressBook = allAddressBooks.getNext();
+		if (addressBook instanceof Components.interfaces.nsIAbDirectory && 
+			!addressBook.isRemote && !addressBook.isMailList && addressBook.fileName != 'history.mab') {
+			var ab = document.createElement('listitem');
+			ab.setAttribute('label', addressBook.dirName);
+			ab.setAttribute('value', addressBook.URI);
+                        if (prefs.getCharPref('abname') == addressBook.URI){
+				ab.setAttribute('selected',true)}
+                        
+			document.getElementById('localContactsFolder').appendChild(ab);
+			
+		}
+	}
+	//if(document.getElementById('localContactsFolder').selectedIndex < 0)
+	//	document.getElementById('localContactsFolder').selectedIndex = 0;
+  }
