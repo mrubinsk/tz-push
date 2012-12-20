@@ -14,11 +14,13 @@
 			<preference id="user" name="extensions.tzpush.user" type="string"/>
 			<preference id="deviceID" name="extensions.tzpush.deviceId" type="string"/>
 			<preference id="https" name="extensions.tzpush.https" type="bool"/>
+                        <preference id="prov" name="extensions.tzpush.prov" type="bool"/>
 			</preferences>
 		<vbox align="center">
                         <label control="hostbox" value="Server Address: "/>
 			<textbox preference="host" id="hostbox"/>
 			<checkbox label="Use https://" preference="https" checked="false"/>
+                        <checkbox label="Use Provisioning" preference="prov" checked="false"/>
 			<label control="userbox" value="User Name: "/>
 			<textbox preference="user" id="userbox"/>
 			<label control="passbox" value="Password: "/>
