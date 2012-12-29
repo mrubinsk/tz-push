@@ -14,6 +14,7 @@ Please test https://.
 
 
 = Details =
+Have added support for provisioning, so no need to do anything to server.
 
 It has no conflict resolution. Best to start with an empty address book at either end.
 
