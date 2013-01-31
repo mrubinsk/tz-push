@@ -2,7 +2,7 @@
 <?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
 
 
-<prefwindow id="tzsettings" title="TZ Settings" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" width="400" height="300" screenX="20" screenY="20" persist="screenX screenY width height">
+<prefwindow id="tzsettings" title="TZ Settings" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" width="600" height="650" screenX="20" screenY="20" persist="screenX screenY width height">
 
 
 	<prefpane id="settings" label="Setting Dialog">
@@ -15,21 +15,42 @@
 			<preference id="deviceID" name="extensions.tzpush.deviceId" type="string"/>
 			<preference id="https" name="extensions.tzpush.https" type="bool"/>
                         <preference id="prov" name="extensions.tzpush.prov" type="bool"/>
+			<preference id="polkey" name="extensions.tzpush.polkey" type="string"/>
+			<preference id="deviceId" name="extensions.tzpush.deviceId" type="string"/>
 			</preferences>
 		<vbox align="center">
+			<hbox>
                         <label control="hostbox" value="Server Address: "/>
 			<textbox preference="host" id="hostbox"/>
 			<checkbox label="Use https://" preference="https" checked="false"/>
-                        <checkbox label="Use Provisioning" preference="prov" checked="false"/>
+			</hbox>
+			<checkbox label="Use Provisioning" preference="prov" checked="false"/>
+			<hbox>
 			<label control="userbox" value="User Name: "/>
 			<textbox preference="user" id="userbox"/>
+			</hbox>
+			<hbox>
 			<label control="passbox" value="Password: "/>
 			<textbox preference="password" id="passbox" type="password"/>
+			</hbox>
+			<hbox>
 			<label control="syncbox" value="Sync Key"/>
-			<textbox preference="synckey" id="syncbox"/>
-                        <label control="folderbox" value="FolderID"/>
-			<textbox preference="folderID" id="folderbox"/>
+			<textbox preference="synckey" id="syncbox" size="37" />
+                        </hbox>
+			<hbox>
+			<label control="folderbox" value="FolderID"/>
+			<textbox preference="folderID" id="folderbox" size="41" />
+			</hbox>
+			<hbox>
+			<label control="polbox" value="polkey"/>
+			<textbox preference="polkey" id="polbox" size="9"/>
+			</hbox>
+			<hbox>
+			<label control="devbox" value="DevId"/>
+			<textbox preference="deviceId" id="devbox" size="36" />
+			</hbox>
 			<button label="Sync Adddressbook" id="syncbut" onclick="go();"/>
+			<button label="Reset" id="resetbut" onclick="reset();"/>
 		</vbox>
 
 		

@@ -11,12 +11,18 @@ SSL = prefs.getBoolPref("https")
 if (SSL == true){SERVER = "https://" + host + "/Microsoft-Server-ActiveSync"}
 else{SERVER = "http://" + host + "/Microsoft-Server-ActiveSync"}
 deviceType = 'Thunderbird'
+deviceId = prefs.getCharPref("deviceId")
+if (deviceId == "")
+{deviceId = Date.now();
+prefs.setCharPref("deviceId",deviceId)}
 polkey = prefs.getCharPref("polkey")
 synckey = prefs.getCharPref("synckey")
 if (prefs.getBoolPref("prov"))
 {
 PolKey()
 }
+if (deviceId == "")
+{}
 if (synckey == '')
     {GetFolderId()
     fromzpush()
