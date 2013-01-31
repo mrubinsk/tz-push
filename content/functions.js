@@ -1,5 +1,34 @@
 /* Copyright (c) 2006 YourNameHere
    See the file LICENSE.txt for licensing information. */
+function reset() {
+var prefs = Components.classes["@mozilla.org/preferences-service;1"]
+			.getService(Components.interfaces.nsIPrefService);
+	prefs = prefs.getBranch("extensions.tzpush.");
+addressUrl = prefs.getCharPref("abname") 	
+prefs.setCharPref("polkey",'0')
+prefs.setCharPref("folderID","")
+prefs.setCharPref("synckey","")
+prefs.setCharPref("LastSyncTime","99999999999999")
+prefs.setCharPref("deviceId","")
+abManager = Components.classes["@mozilla.org/abmanager;1"]
+		.getService(Components.interfaces.nsIAbManager);
+addressBook = abManager.getDirectory(addressUrl);
+
+cards = addressBook.childCards;
+while (cards.hasMoreElements()) {
+card = cards.getNext()
+if (card instanceof Components.interfaces.nsIAbCard){
+//alert(card.getProperty('FirstName',''))
+card.setProperty('ServerId','')
+card.setProperty("LastModifiedDate",'')
+addressBook.modifyCard(card)
+
+   
+
+}
+ 
+}
+}
 
 function PolKey() {
 polkey = prefs.getCharPref("polkey")
@@ -29,7 +58,8 @@ prefs.setCharPref("polkey",polkey)
 function FindFolder(wbxml)
 {
 start = 0
-contact = wbxml.indexOf('Contacts')
+Scontact = String.fromCharCode(0x4A,0x03) + '9' + String.fromCharCode(0x00,0x01)
+contact = wbxml.indexOf(Scontact)
 while (wbxml.indexOf(String.fromCharCode(0x48,0x03),start) < contact)
 {
 start = wbxml.indexOf(String.fromCharCode(0x48,0x03),start) + 2
@@ -68,9 +98,9 @@ function Send(wbxml)
 // alert(toxml(wbxml))  
 var req = new XMLHttpRequest(); 
 	req.mozBackgroundRequest = true; 
-	req.open("POST", SERVER +'?Cmd=' + command +'&User='+ USER +'&DeviceId=TZ-PUSH', false);
+	req.open("POST", SERVER +'?Cmd=' + command +'&User='+ USER +'&DeviceType=Thunderbird'+'&DeviceId=' + deviceId, false);
 	req.overrideMimeType('application/vnd.ms-sync.wbxml'); 
-	req.setRequestHeader("User-Agent", deviceType+' ActiveSync');
+	// req.setRequestHeader("User-Agent", deviceType+' ActiveSync');
 	req.setRequestHeader("Content-Type", 'application/vnd.ms-sync.wbxml');
 	req.setRequestHeader("Authorization", 'Basic '+btoa(USER+':'+PASSWORD));
 	req.setRequestHeader("MS-ASProtocolVersion", '2.5');
@@ -79,7 +109,7 @@ var req = new XMLHttpRequest();
         req.setRequestHeader("X-MS-PolicyKey", polkey);
         }
        // alert("insend " + polkey)
-        req.sendAsBinary(wbxml);
+        req.send(wbxml);
         wbxml = req.responseText;
         
 //        alert(toxml(wbxml))
