@@ -2,7 +2,7 @@ Installation.
 
 = Introduction =
 
-*I have Tested in Linux(Gentoo) and Windows 7*
+*I have Tested in Linux(Gentoo) and Windows 7 and Windows XP*
 
 Download tzpush.zip, unzip and install xpi.
 Configuration and Sync button are under tools menu.
@@ -17,5 +17,4 @@ SyncKey and FolderId boxes are for information only.
 
 = Details =
 
-Works for me. But at the moment I suggest just testing.
-Create new user/profile?
+Thanks to all the people who test and get involved and increased my German 200%. Umlates are no problem!
