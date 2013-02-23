@@ -1,8 +1,8 @@
-Plugin for Thunderbird to Sync Adressbook with Z-Push
+Extension for Thunderbird to Sync Adressbook with Z-Push
 
 = Introduction =
 
-Plugin for Thunderbird to Sync Adressbook with Z-Push.(Zentyal/Zarafa).
+Extension for Thunderbird to Sync Adressbook with Z-Push.(Zentyal/Zarafa).
 Please test.
 It will get address book from server and upload Thunderbird address book to server.
 
