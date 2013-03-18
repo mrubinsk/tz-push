@@ -4,10 +4,10 @@
     <Description about="urn:mozilla:install-manifest">
         <em:id>tzpush@capeproject.org.uk</em:id>
         <em:name>tzpush</em:name>
-        <em:version>0.8.5</em:version>
+        <em:version>0.9.2</em:version>
         <em:description>Z-Sync to Thunderbird Addressbook</em:description>
         <em:creator>Mark N.</em:creator>
-        <em:homepageURL>http://capeproject.org.uk/tz_push_extension</em:homepageURL>
+        <em:homepageURL>http://code.google.com/p/tz-push/</em:homepageURL>
         <em:type>2</em:type> <!-- type=extension --> 
 
         <em:targetApplication>

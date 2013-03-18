@@ -7,7 +7,10 @@
         
 var tzpush = {
   onLoad: function() {
-     //You can place set-up code for the extension here
+   // autosync = prefs.getCharPref("autosync")
+   // if (autosync != 0) {
+   // interval = window.setInterval(go, autosync*60*1000)
+    //}
   },
 
   onMenuItemCommand: function() {

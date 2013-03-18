@@ -1,3 +1,12 @@
+function auto() {
+    //alert("inauto")
+ var prefs = Components.classes["@mozilla.org/preferences-service;1"]
+			.getService(Components.interfaces.nsIPrefService);
+	prefs = prefs.getBranch("extensions.tzpush.");
+        synctime = prefs.getCharPref("autosync") * 1000 * 60
+        if (synctime != 0 ) {window.setInterval(go,synctime)}
+}
+function poppop() {alert("timer")}
 function go() {
 
 var prefs = Components.classes["@mozilla.org/preferences-service;1"]
@@ -29,7 +38,8 @@ if (synckey == '')
     tozpush()}
 
 else {fromzpush()
-      tozpush()}
+      tozpush()
+      senddel()}
 
 
 //new Date()
@@ -37,3 +47,8 @@ LastSyncTime = Date.now()
 prefs.setCharPref("LastSyncTime",LastSyncTime)
 // alert(LastSyncTime)
 }
+ var prefs = Components.classes["@mozilla.org/preferences-service;1"]
+			.getService(Components.interfaces.nsIPrefService);
+	prefs = prefs.getBranch("extensions.tzpush.");
+if (prefs.getCharPref("autosync") != 0 ) {go()}
+
