@@ -29,15 +29,15 @@ Contacts2= ({
 'HomeState':0x64,
 'HomeZipCode':0x63,
 'HomeCountry':0x62,
-'WorkAddress':0x61,
+'WorkAddress':0x51,
 //'WorkAddress2':'
 'WorkCity':0x4D,
 'WorkState':0x50,
 'WorkZipCode':0x4F,
-'WorkCountry':0x50,
+'WorkCountry':0x4E,
 'JobTitle':0x68,
 'Department':0x5A,
-'Organisation':0x59,
+'Company':0x59,
 'WebPage1':0x77,
 //'WebPage2':'
 //'BirthYear':'
@@ -131,7 +131,7 @@ end = wbxml.indexOf(String.fromCharCode(0x00),start)
 ServerId = wbxml.substring(start +2,end)
 //alert('ServerId = ' +  ServerId)
 //alert(start + ' ' + end)
-addressBook = abManager.getDirectory("moz-abmdbdirectory://abook.mab");
+addressBook = abManager.getDirectory(addressUrl);
 cards = addressBook.childCards;
 while (cards.hasMoreElements()) {
 card = cards.getNext()

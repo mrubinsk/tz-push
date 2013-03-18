@@ -9,8 +9,8 @@ pref("extensions.tzpush.https",false);
 pref("extensions.tzpush.abname","");
 pref("extensions.tzpush.polkey","0");
 pref("extensions.tzpush.prov",false);
-pref("extensions.tzpush.folderSynckey","")
-
+pref("extensions.tzpush.folderSynckey","");
+pref("extensions.tzpush.autosync","0");
 
 // for installation
 // pref("extensions.tzpush@capeproject.org.uk", "chrome://tzpush/locale/tzpush.properties");

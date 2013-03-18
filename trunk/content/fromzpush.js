@@ -25,15 +25,15 @@ Contacts2= ({
 'HomeState':0x64,
 'HomeZipCode':0x63,
 'HomeCountry':0x62,
-'WorkAddress':0x61,
+'WorkAddress':0x51,
 //'WorkAddress2':'
 'WorkCity':0x4D,
 'WorkState':0x50,
 'WorkZipCode':0x4F,
-'WorkCountry':0x50,
+'WorkCountry':0x4E,
 'JobTitle':0x68,
 'Department':0x5A,
-'Organisation':0x59,
+'Company':0x59,
 'WebPage1':0x77,
 //'WebPage2':'
 //'BirthYear':'
@@ -65,7 +65,7 @@ ToContacts = {
 0x64:'HomeState',
 0x63:'HomeZipCode',
 0x62:'HomeCountry',
-0x51:'WorkAddress',
+0x41:'WorkAddress',
 //'WorkAddress2':'
 0x4D:'WorkCity',
 0x50:'WorkState',
@@ -73,7 +73,7 @@ ToContacts = {
 0x4E:'WorkCountry',
 0x68:'JobTitle',
 0x5A:'Department',
-0x59:'Organisation',
+0x59:'Company',
 0x77:'WebPage1',
 //'WebPage2':'
 //'BirthYear':'
@@ -112,6 +112,7 @@ data = ''
 var x = 0
 popval = 2
 moreavilable = 0
+photo = ''
 while (num < wbxml.length){
         token = wbxml.substr(num,1);
         tokencontent = token.charCodeAt(0) & 0xbf
@@ -124,17 +125,26 @@ while (num < wbxml.length){
           }             
             else if (token == String.fromCharCode(0x03) )
           {     temptoken = (wbxml.substr(num - 1,1)).charCodeAt(0) // & 0xbf
-                data = (wbxml.substring(num + 1, wbxml.indexOf(String.fromCharCode(0x00),num))) 
+	  //alert(temptoken)
+                data = (wbxml.substring(num + 1, wbxml.indexOf(String.fromCharCode(0x00,0x01),num))) 
                 num = wbxml.indexOf(String.fromCharCode(0x00),num)
-                if (x === 0x01) {                
+                if ( x === 0x01 && temptoken === 0x7C) {
+		 //alert("going to addphoto")
+		//call photo handler
+		filePath = addphoto(data)
+		//alert(filePath)
+		photo = card.getProperty("ServerId", "") + '.jpg';
+		}
+		else if (x === 0x01) {                
                  propname = ToContacts[temptoken]
                  //alert(propname + ' ' + data)
                 card.setProperty(propname, data)}
                else if (x === 0 && temptoken === 0x4D) {
 		card.setProperty('ServerId',data)
-                // alert(temptoken)
-		// alert('ServerId = ' + data)
+                 //alert(temptoken)
+		 //alert('ServerId = ' + data)
 		}
+	      
              }
                 
          
@@ -142,7 +152,12 @@ while (num < wbxml.length){
             else if (token == String.fromCharCode(0x01))
          {
              popval = stack.pop()
-            if (popval === 500) {                
+            if (popval === 500) {
+		if (photo) {
+		card.setProperty("PhotoName", photo );
+		card.setProperty("PhotoType", "file" )
+		card.setProperty("PhotoURI", filePath )
+		photo = ''}
              var newCard = addressBook.addCard(card);
             //alert(FirstName +' '+ LastName +' '+ CellularNumber +' '+ PrimaryEmail);
              card = Components.classes["@mozilla.org/addressbook/cardproperty;1"]
@@ -169,9 +184,18 @@ while (num < wbxml.length){
 		//alert(y + " " + tmpProp)
 		modcard.setProperty(y,tmpProp)
 		
+		
 		}
 
 		}
+		//PhotoName=card.getProperty("PhotoName", '' );
+		//PhotoType=card.getProperty("PhotoType", '' )
+		//PhotoURI=card.getProperty("PhotoURI", '' )
+		if (photo) {
+		modcard.setProperty("PhotoName", photo );
+		modcard.setProperty("PhotoType", "file" )
+		modcard.setProperty("PhotoURI", filePath )
+		photo = ''}
 		//alert(modcard.getProperty("PrimaryEmail",""))
 		var newCard = addressBook.modifyCard(modcard);
                 // alert(modcard.getProperty("FirstName",""))

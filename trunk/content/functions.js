@@ -1,5 +1,40 @@
 /* Copyright (c) 2006 YourNameHere
    See the file LICENSE.txt for licensing information. */
+
+
+
+function addphoto(data){
+var photo = card.getProperty("PhotoName", "");
+				//alert("in addphoto")
+				
+			Components.utils.import("resource://gre/modules/FileUtils.jsm");
+ 			var dir = FileUtils.getDir("ProfD", ["Photos"], true);
+				
+			
+				photo = card.getProperty("ServerId", "") + '.jpg';
+				card.setProperty("PhotoName", photo );
+				//alert(photo)
+			
+			var foStream = Components.classes["@mozilla.org/network/file-output-stream;1"]
+				.createInstance(Components.interfaces.nsIFileOutputStream);
+			var file = Components.classes["@mozilla.org/file/directory_service;1"]
+						         .getService(Components.interfaces.nsIProperties)
+						         .get("ProfD", Components.interfaces.nsIFile);
+			file.append("Photos");
+			file.append(photo); 
+			foStream.init(file, 0x02 | 0x08 | 0x20, 0600, 0);   // write, create, truncate
+				var binary = atob(data);
+				foStream.write(binary, binary.length);
+			foStream.close();
+			card.setProperty("PhotoType", "file" );
+			var filePath = 'file:///' + file.path.replace(/\\/g, '\/').replace(/^\s*\/?/, '').replace(/\ /g, '%20');
+			card.setProperty("PhotoURI", filePath );
+			//alert(filePath)
+			return filePath
+
+}
+
+
 function reset() {
 var prefs = Components.classes["@mozilla.org/preferences-service;1"]
 			.getService(Components.interfaces.nsIPrefService);
@@ -112,7 +147,7 @@ var req = new XMLHttpRequest();
         req.send(wbxml);
         wbxml = req.responseText;
         
-//        alert(toxml(wbxml))
+ //       alert(toxml(wbxml))
         return wbxml;
 }
 

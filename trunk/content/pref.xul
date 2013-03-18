@@ -4,7 +4,8 @@
 
 <prefwindow id="tzsettings" title="TZ Settings" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" width="600" height="650" screenX="20" screenY="20" persist="screenX screenY width height">
 
-
+ 
+ 
 	<prefpane id="settings" label="Setting Dialog">
 		<preferences>
 			<preference id="host" name="extensions.tzpush.host" type="string"/>
@@ -17,6 +18,8 @@
                         <preference id="prov" name="extensions.tzpush.prov" type="bool"/>
 			<preference id="polkey" name="extensions.tzpush.polkey" type="string"/>
 			<preference id="deviceId" name="extensions.tzpush.deviceId" type="string"/>
+			<preference id="AutoSync" name="extensions.tzpush.autosync" type="string"/>
+
 			</preferences>
 		<vbox align="center">
 			<hbox>
@@ -50,13 +53,19 @@
 			<textbox preference="deviceId" id="devbox" size="36" />
 			</hbox>
 			<button label="Sync Adddressbook" id="syncbut" onclick="go();"/>
+			<hbox>
+				
+			<label control="autobox" value="Auto Sync time in minutes" tooltiptext="0 for never" />
+			<textbox preference="AutoSync" id="autobox" />
+			<button label="Apply" onclick= "auto()" />
+			</hbox>
 			<button label="Reset" id="resetbut" onclick="reset();"/>
 		</vbox>
 
 		
 
 	</prefpane>
-         <script type="application/x-javascript" src="chrome://tzpush/content/functions.js" />
+         
         <prefpane id="PrefAddressBook" label="AddressBook Options">
             
 	<preferences>
@@ -71,11 +80,18 @@
 		
 	</vbox>
   </prefpane>
+	
+ 
+ <script type="application/x-javascript" src="chrome://tzpush/content/functions.js" />	
  <script> localAbs()</script>     
  <script type="application/x-javascript" src="chrome://tzpush/content/overlay.js" /> 
- <script type="application/x-javascript" src="chrome://tzpush/content/tz-sync.js" />
 
+ <script type="application/x-javascript" src="chrome://tzpush/content/senddel.js" />
  <script type="application/x-javascript" src="chrome://tzpush/content/tozpush.js" />
  <script type="application/x-javascript" src="chrome://tzpush/content/fromzpush.js" />
  <script type="application/x-javascript" src="chrome://tzpush/content/toxml.js" />
+ <script type="application/x-javascript" src="chrome://tzpush/content/tz-sync.js" />
+ 
+  
+ 
 </prefwindow>
