@@ -10,7 +10,7 @@ Enter Server address and password.
 
 On Windows machines you need to press OK before first sync.
 
-SyncKey and FolderId boxes are for information only.
+
 
 
 
