@@ -12,7 +12,7 @@ ie English to German.
 
 
 = Details =
-
+{{{
 <!ENTITY overlay.tzpush "TZ-Push">
 <!ENTITY overlay.TZ-Settings "TZ-Settings">       
 <!ENTITY overlay.tz-sync "tz-sync">
@@ -36,3 +36,4 @@ ie English to German.
 
 <!ENTITY pref.LocalAddressBook "Local Address Book">
 <!ENTITY pref.About "Notes Etc.">
+}}}
