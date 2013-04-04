@@ -7,7 +7,7 @@ Please test.
 It will get address book from server and upload Thunderbird address book to server.
 
 
-Also the default for Z-push on Zentyal seems to be http, so this is set in my plugin.
+Also the default for Z-push on Zentyal/Zarafa seems to be http, so this is set in my extension.
 
 
 
