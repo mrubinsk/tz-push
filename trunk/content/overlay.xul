@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
+<?xml-stylesheet type="text/css"
+  href="chrome://tzpush/skin/browserOverlay.css" ?>
+<!DOCTYPE overlay SYSTEM "chrome://tzpush/locale/overlay.dtd">
+<overlay id="tzpush_extensionOverlay"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+         >
+  
+ <script type="application/x-javascript" src="chrome://tzpush/content/functions.js" />   
+ <script type="application/x-javascript" src="chrome://tzpush/content/toxml.js" />
+ <script type="application/x-javascript" src="chrome://tzpush/content/tozpush.js" />
+ <script type="application/x-javascript" src="chrome://tzpush/content/fromzpush.js" />
+ <script type="application/x-javascript" src="chrome://tzpush/content/ablisten.js" />
+ <script type="application/x-javascript" src="chrome://tzpush/content/senddel.js" />
+ <script type="application/x-javascript" src="chrome://tzpush/content/tz-sync.js" />
+ <script type="application/x-javascript" src="chrome://tzpush/content/overlay.js" />
+ <script>startgo()</script>
+ 
+<menubar id="taskPopup">
+      <menu id="tzpushmain"  label="&overlay.tzpush;" >
+      <menupopup>
+        <menuitem id="tzsettingsmenu"
+          label="&overlay.TZ-Settings;"
+          oncommand="tzpush.onMenuItemCommand(event);" />
+        <menuitem id="tzsettingsmenu"
+          label="&overlay.tz-sync;"
+          oncommand="tzpush.onSync(event);" />
+      </menupopup>
+    </menu>
+  </menubar>
+ 
+</overlay>
