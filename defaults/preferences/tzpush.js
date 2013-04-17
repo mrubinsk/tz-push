@@ -1,16 +1,15 @@
 pref("extensions.tzpush.host", "");
 pref("extensions.tzpush.user", "");
-pref("extensions.tzpush.password","");
 pref("extensions.tzpush.deviceId", "");
 pref("extensions.tzpush.synckey", "");
 pref("extensions.tzpush.folderID", "");
 pref("extensions.tzpush.LastSyncTime", "");
 pref("extensions.tzpush.https",false);
-pref("extensions.tzpush.abname","");
+pref("extensions.tzpush.abname","moz-abmdbdirectory://abook.mab");
 pref("extensions.tzpush.polkey","0");
 pref("extensions.tzpush.prov",false);
 pref("extensions.tzpush.folderSynckey","");
 pref("extensions.tzpush.autosync","0");
-
-// for installation
-// pref("extensions.tzpush@capeproject.org.uk", "chrome://tzpush/locale/tzpush.properties");
+pref("extensions.tzpush.debugwbxml","0");
+pref("extensions.tzpush.go","0");
+pref("extensions.tzpush.birthday",false);

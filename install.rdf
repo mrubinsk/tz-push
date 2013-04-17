@@ -4,20 +4,21 @@
     <Description about="urn:mozilla:install-manifest">
         <em:id>tzpush@capeproject.org.uk</em:id>
         <em:name>tzpush</em:name>
-        <em:version>0.9.2</em:version>
+        <em:version>0.9.9.3</em:version>
         <em:description>Z-Sync to Thunderbird Addressbook</em:description>
         <em:creator>Mark N.</em:creator>
         <em:homepageURL>http://code.google.com/p/tz-push/</em:homepageURL>
+        <em:iconURL>chrome://tzpush/skin/tz-push.png</em:iconURL>
         <em:type>2</em:type> <!-- type=extension --> 
 
         <em:targetApplication>
            <!-- Thunderbird -->
            <Description>
                 <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
-                <em:minVersion>3.5</em:minVersion>
-                <em:maxVersion>999.0.*</em:maxVersion>
+                <em:minVersion>10.0</em:minVersion>
+                <em:maxVersion>17.*</em:maxVersion>
            </Description>
         </em:targetApplication>
-        <em:optionsURL>chrome://tzpush/content/pref.xul</em:optionsURL>
+        <em:optionsURL>javascript:opener.openDialog('chrome://tzpush/content/pref.xul','','chrome,modal,resizable,toolbar');window.close();</em:optionsURL>
     </Description>
 </RDF>
