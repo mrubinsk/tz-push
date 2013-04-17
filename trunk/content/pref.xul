@@ -1,96 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://tzpush/locale/overlay.dtd">
 
+<prefwindow id="tzsettings" 
+ xmlns:html="http://www.w3.org/1999/xhtml"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+ style="width: 600px; height: 400px"
+ persist="width height"
 
-<prefwindow id="tzsettings" title="TZ Settings" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" width="600" height="650" screenX="20" screenY="20" persist="screenX screenY width height">
+ onload="onopen()" onunload="onclose()" 
+ title="TZ Settings" >
 
  
  
-	<prefpane id="settings" label="Setting Dialog">
+	<prefpane id="settings" label="&pref.SettingDialog;" image="chrome://tzpush/skin/settings.png" >
 		<preferences>
 			<preference id="host" name="extensions.tzpush.host" type="string"/>
-			<preference id="password" name="extensions.tzpush.password" type="string"/>
 			<preference id="synckey" name="extensions.tzpush.synckey" type="string"/>
 			<preference id="folderID" name="extensions.tzpush.folderID" type="string"/>
 			<preference id="user" name="extensions.tzpush.user" type="string"/>
 			<preference id="deviceID" name="extensions.tzpush.deviceId" type="string"/>
 			<preference id="https" name="extensions.tzpush.https" type="bool"/>
-                        <preference id="prov" name="extensions.tzpush.prov" type="bool"/>
+            <preference id="prov" name="extensions.tzpush.prov" type="bool"/>
 			<preference id="polkey" name="extensions.tzpush.polkey" type="string"/>
 			<preference id="deviceId" name="extensions.tzpush.deviceId" type="string"/>
 			<preference id="AutoSync" name="extensions.tzpush.autosync" type="string"/>
-
+			<preference id="wbxmldebug" name="extensions.tzpush.wbxmldebug" type="bool"/>
+            <preference id="birthday" name="extensions.tzpush.birthday" type="bool"/>
 			</preferences>
-		<vbox align="center">
-			<hbox>
-                        <label control="hostbox" value="Server Address: "/>
-			<textbox preference="host" id="hostbox"/>
-			<checkbox label="Use https://" preference="https" checked="false"/>
-			</hbox>
-			<checkbox label="Use Provisioning" preference="prov" checked="false"/>
-			<hbox>
-			<label control="userbox" value="User Name: "/>
-			<textbox preference="user" id="userbox"/>
-			</hbox>
-			<hbox>
-			<label control="passbox" value="Password: "/>
-			<textbox preference="password" id="passbox" type="password"/>
-			</hbox>
-			<hbox>
-			<label control="syncbox" value="Sync Key"/>
-			<textbox preference="synckey" id="syncbox" size="37" />
-                        </hbox>
-			<hbox>
-			<label control="folderbox" value="FolderID"/>
-			<textbox preference="folderID" id="folderbox" size="41" />
-			</hbox>
-			<hbox>
-			<label control="polbox" value="polkey"/>
-			<textbox preference="polkey" id="polbox" size="9"/>
-			</hbox>
-			<hbox>
-			<label control="devbox" value="DevId"/>
-			<textbox preference="deviceId" id="devbox" size="36" />
-			</hbox>
-			<button label="Sync Adddressbook" id="syncbut" onclick="go();"/>
-			<hbox>
-				
-			<label control="autobox" value="Auto Sync time in minutes" tooltiptext="0 for never" />
-			<textbox preference="AutoSync" id="autobox" />
-			<button label="Apply" onclick= "auto()" />
-			</hbox>
-			<button label="Reset" id="resetbut" onclick="reset();"/>
-		</vbox>
+ <grid flex="0" align="center">
+  
+  <columns>
+    <column flex="0"/>
+    <column flex="0"/>
+    <column flex="0"/>
+  </columns>               
+   <rows>
+    <row>
+      <label control="hostbox" value="&pref.Server;"/>
+      <textbox preference="host" id="hostbox"/>
+      <checkbox label="&pref.usehttps;" preference="https" checked="false"/>
+    </row>
+    <row>
+      <label control="userbox" value="&pref.UserName; "/>
+      <textbox preference="user" id="userbox"/>
+    </row>
+    <row>
+       <label control="passbox" value="&pref.Password;" />
+       <textbox   id="passbox" type="password" onkeyup="updatepass();"/>
+    </row>
+    <row>
+      <label control="devbox" value="&pref.DeviceId;" tooltiptext="&pref.blank;"/>
+      <textbox preference="deviceId" id="devbox" tooltiptext="&pref.blank;" />
+    </row>
+    <row>
+        <label control="provboxbox" value="&pref.UseProvisioning;"/>
+        <checkbox  preference="prov" checked="false"/>
+    </row>
+    <row>
+        <label control="birthdaybox" value="&pref.birthday;"/>
+        <checkbox  preference="birthday" checked="false"/>
+    </row>
+    <row>
+      <label control="autobox" value="&pref.autotime;" tooltiptext="&pref.never;" />
+      <textbox preference="AutoSync" id="autobox" tooltiptext="&pref.never;"/>
+    </row>
+    <row>
+        <label />
+        <button label="&pref.SyncAdddressbook;" id="syncbut" onclick="toggelgo();"/>
+    </row>
+    <label value=" "/>
+    <row>
+        <label />
+        <button label="&pref.Reset;" id="resetbut" onclick="reset();"/>
+    </row>
+    
+    <label align="center" value="&pref.Caution;" />
+  </rows>
+                
 
-		
+</grid>
 
-	</prefpane>
+</prefpane>
          
-        <prefpane id="PrefAddressBook" label="AddressBook Options">
+        <prefpane id="PrefAddressBook" label="&pref.AddressBookOptions;"  image="chrome://tzpush/skin/address-book.png" >
             
 	<preferences>
-	<preference id="contactsLocalFolderPref" name="extensions.tzpush.abname" type="string"/>
+	
 	</preferences>
 	<vbox>
 		<groupbox>
-			<caption label="Local Address Book" />
-	<listbox id="localContactsFolder" rows="3" onselect="prefs.setCharPref('abname',this.value),localAbs()"></listbox>
+			<caption label="&pref.LocalAddressBook;" />
+	<listbox id="localContactsFolder" rows="3" onclick="setselect(this.value)">
+            
+        </listbox>
 			
 		</groupbox>
 		
 	</vbox>
   </prefpane>
 	
+<prefpane id="Help" label="&pref.About;" image="chrome://tzpush/skin/cape.png"  >
+   <html:h4>Birthdays</html:h4>
+<html:p>There seems to be a problem with entering birthday data in some
+versions of Zarafa Webaccess. It does work in the Webapp.<html:br />
+This is why there is a check box "Send Birthday Information"<html:br/>
+This is a Zarafa bug not Tz-push<html:br />
+</html:p>
+ <grid flex="1" align="center">
+     <columns>
+    <column flex="0"/>
+    <column flex="1"/>
+  </columns>
+     <rows>
+<row>
+    <image src="chrome://tzpush/skin/cape.png" width='100' height='70' align='center' onclick="cape() "  onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'" />
+     <html:h4> Cape is an established registered charity offering a dynamic and flexible outreach and day service for people who experience severe and enduring mental health difficulties. <html:br/>
+     Tz-push is free software, but feel free to donate to good cause, like CAPE. <html:br/>
+     Thankyou,<html:br/>
+     Mark.
+</html:h4> 
+</row>
+<row>
+ <label value="www.capeproject.org.uk"
+        style="color: blue; text-decoration: underline"
+        onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'" 
+        align="center"   onclick="cape()"/> 
+</row>
+</rows>
+ </grid>
  
- <script type="application/x-javascript" src="chrome://tzpush/content/functions.js" />	
- <script> localAbs()</script>     
- <script type="application/x-javascript" src="chrome://tzpush/content/overlay.js" /> 
+</prefpane>
+ 
+ <script type="application/x-javascript" src="chrome://tzpush/content/pref.js" />	 
 
- <script type="application/x-javascript" src="chrome://tzpush/content/senddel.js" />
- <script type="application/x-javascript" src="chrome://tzpush/content/tozpush.js" />
- <script type="application/x-javascript" src="chrome://tzpush/content/fromzpush.js" />
- <script type="application/x-javascript" src="chrome://tzpush/content/toxml.js" />
- <script type="application/x-javascript" src="chrome://tzpush/content/tz-sync.js" />
  
   
  

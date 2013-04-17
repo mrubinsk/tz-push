@@ -1,3 +1,6 @@
+/* Copyright (c) 2012 Mark Nethersole
+   See the file LICENSE.txt for licensing information. */
+
  var prefs = Components.classes["@mozilla.org/preferences-service;1"]
 			.getService(Components.interfaces.nsIPrefService);
 	prefs = prefs.getBranch("extensions.tzpush.");
@@ -17,7 +20,7 @@ var tzpush = {
     window.open(
 		"chrome://tzpush/content/pref.xul",
 		"", 
-		"chrome,centerscreen,modal,toolbar", 
+		"chrome,centerscreen,resizable,toolbar", 
 		null, null
 	);
     
