@@ -1,21 +1,25 @@
 /* Copyright (c) 2012 Mark Nethersole
    See the file LICENSE.txt for licensing information. */
+if (typeof tzpush == "undefined") {
+    var tzpush ={}
+}
 
- prefs = Components.classes["@mozilla.org/preferences-service;1"]
-			.getService(Components.interfaces.nsIPrefService);
-	prefs = prefs.getBranch("extensions.tzpush.");
+var tzpush = {
+prefs : Components.classes["@mozilla.org/preferences-service;1"]
+			.getService(Components.interfaces.nsIPrefService).getBranch("extensions.tzpush."),
+	
        
-function onopen() {
-    updateprefs()
-	document.getElementById('passbox').value = PASSWORD
-	localAbs()
-}
+onopen : function() {
+        tzpush.updateprefs();
+	document.getElementById('passbox').value = PASSWORD;
+	tzpush.localAbs();
+}, 
 
-function onclose() {
+onclose : function() {
 
-}
+},
 
-function getpassword() {
+getpassword : function() {
         var myLoginManager = Components.classes["@mozilla.org/login-manager;1"].
         getService(Components.interfaces.nsILoginManager);
        
@@ -31,9 +35,10 @@ function getpassword() {
  
 if (typeof password === 'undefined') {password = ""}  
 return password
-}
-function setpassword() {
-	PASSWORD=getpassword()
+},
+
+setpassword : function() {
+	PASSWORD=tzpush.getpassword()
 	if (NEWPASSWORD != PASSWORD) {
         
  var nsLoginInfo = new Components.Constructor(
@@ -53,7 +58,7 @@ if (NEWPASSWORD != PASSWORD) {
 	myLoginManager.removeLogin(loginInfo)}
 	}
 	myLoginManager.addLogin(updateloginInfo)
-	updateprefs()
+	tzpush.updateprefs()
 }
 else if (PASSWORD === "" || typeof PASSWORD === 'undefined'){
 	myLoginManager.addLogin(updateloginInfo);
@@ -61,32 +66,31 @@ else if (PASSWORD === "" || typeof PASSWORD === 'undefined'){
 }
 else {myLoginManager.removeLogin(loginInfo)}
     }
-}
+},
 
-function updateprefs() {
-addressUrl = prefs.getCharPref("abname")
-SSL = prefs.getBoolPref("https")
-host = prefs.getCharPref("host")
+updateprefs : function() {
+  
+addressUrl = tzpush.prefs.getCharPref("abname")
+SSL = tzpush.prefs.getBoolPref("https")
+host = tzpush.prefs.getCharPref("host")
 if (SSL == true){hthost = "https://" + host}
 else{hthost = "http://" + host}
 if (SSL == true){SERVER = "https://" + host + "/Microsoft-Server-ActiveSync"}
 else{SERVER = "http://" + host + "/Microsoft-Server-ActiveSync"}
-USER = prefs.getCharPref("user")
-PASSWORD = getpassword()
+USER = tzpush.prefs.getCharPref("user")
+PASSWORD = tzpush.getpassword()
 NEWPASSWORD = ''
 deviceType = 'Thunderbird'
-deviceId = prefs.getCharPref("deviceId")
+deviceId = tzpush.prefs.getCharPref("deviceId")
 if (deviceId == "")
 {deviceId = Date.now();
-prefs.setCharPref("deviceId",deviceId)}
-polkey = prefs.getCharPref("polkey")
-synckey = prefs.getCharPref("synckey")    
-}
+tzpush.prefs.setCharPref("deviceId",deviceId)}
+polkey = tzpush.prefs.getCharPref("polkey")
+synckey = tzpush.prefs.getCharPref("synckey")    
+},
 
-function localAbs() {
-     prefs = Components.classes["@mozilla.org/preferences-service;1"]
-			.getService(Components.interfaces.nsIPrefService);
-	prefs = prefs.getBranch("extensions.tzpush.");
+localAbs : function() {
+     
     count = -1
 	while (document.getElementById('localContactsFolder').children.length > 0)
 		{document.getElementById('localContactsFolder').removeChild(document.getElementById('localContactsFolder').firstChild)};
@@ -102,7 +106,7 @@ function localAbs() {
 			ab.setAttribute('label', addressBook.dirName);
 			ab.setAttribute('value', addressBook.URI);
 			 count=count+1 
-                        if (prefs.getCharPref('abname') == addressBook.URI){
+                        if (tzpush.prefs.getCharPref('abname') == addressBook.URI){
 			    
 				select = count}
                       
@@ -112,15 +116,16 @@ function localAbs() {
 	}
 	
 	if (select != -1) {document.getElementById('localContactsFolder').selectedIndex = select}
-  }
-  function reset() {
-addressUrl = prefs.getCharPref("abname") 	
-prefs.setCharPref("polkey",'0')
-prefs.setCharPref("folderID","")
-prefs.setCharPref("synckey","")
-prefs.setCharPref("LastSyncTime","99999999999999")
-prefs.setCharPref("deviceId","")
-prefs.setCharPref("autosync","0")
+  },
+  
+reset : function() {
+addressUrl = tzpush.prefs.getCharPref("abname") 	
+tzpush.prefs.setCharPref("polkey",'0')
+tzpush.prefs.setCharPref("folderID","")
+tzpush.prefs.setCharPref("synckey","")
+tzpush.prefs.setCharPref("LastSyncTime","99999999999999")
+tzpush.prefs.setCharPref("deviceId","")
+tzpush.prefs.setCharPref("autosync","0")
 //timer.cancel()
 abManager = Components.classes["@mozilla.org/abmanager;1"]
 		.getService(Components.interfaces.nsIAbManager);
@@ -137,18 +142,18 @@ addressBook.modifyCard(card)
 
 }
 }
-}
+},
 
-function toggelgo() {
+toggelgo : function() {
      //setpassword()
-
-   if (prefs.getCharPref("go") == "0"){
-       prefs.setCharPref("go","1") 
+//tzpush.prefs.setCharPref("go","fromzpush")
+   if (tzpush.prefs.getCharPref("go") == "0"){
+       tzpush.prefs.setCharPref("go","1") 
     }
-    else (prefs.setCharPref("go","0"))
-    }
+    else (tzpush.prefs.setCharPref("go","0"))
+    },
     
-function cape() {
+cape : function() {
     function openTBtab (tempURL) {
 //---------------------------------------------------------
 var tabmail = null;
@@ -166,14 +171,17 @@ if (mail3PaneWindow) {
 };
 
 openTBtab("http://www.c-a-p-e.co.uk")
-}
-function updatepass()
-{
+},
+
+updatepass : function() {
 	
 NEWPASSWORD = document.getElementById('passbox').value
 
-setpassword()
-}
-function setselect(value){
+tzpush.setpassword()
+},
+
+setselect : function(value){
 //alert(value)
-prefs.setCharPref('abname',value)}
+tzpush.prefs.setCharPref('abname',value)}
+
+}
