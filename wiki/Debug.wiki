@@ -1,9 +1,0 @@
-#summary wbxml.
-= Introduction =
-
-Debugging wbxml.
-
-
-= Details =
-
-Setting extensions.tzpush.debugwbxml to 1 in about:config will output xml to the error console and dump the wbxml to binary files in profile/wbxml.
