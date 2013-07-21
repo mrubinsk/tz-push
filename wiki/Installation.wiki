@@ -7,6 +7,7 @@ Installation.
 Download tzpush.zip, unzip and install xpi.
 Configuration and Sync button are under tools menu.
 Enter Server address and password.
+Your z-push setup may require provisioning box to be checked. 
 
 On Windows machines you need to press OK before first sync.
 
