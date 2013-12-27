@@ -3,8 +3,8 @@ Installation.
 = Introduction =
 
 *I have Tested in Linux(Gentoo) and Windows 7 and Windows XP*
-
-Download tzpush.zip, unzip and install xpi.
+Know to work on OSX(Apple) and OS/2.
+Download tzpush.zip and install xpi.
 Configuration and Sync button are under tools menu.
 Enter Server address and password.
 Your z-push setup may require provisioning box to be checked. 
