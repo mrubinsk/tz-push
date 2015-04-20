@@ -1,0 +1,37 @@
+# Introduction #
+
+Below is a copy of the English locale. Anyone care to translate to their own language?
+
+Anything between " and " needs to be looked at.
+
+ie English to German.
+"Setting Dialogue" -> "Einstellen Dialogue" (is this correct?)
+
+
+
+# Details #
+```
+<!ENTITY overlay.tzpush "TZ-Push">
+<!ENTITY overlay.TZ-Settings "TZ-Settings">       
+<!ENTITY overlay.tz-sync "tz-sync">
+
+
+<!ENTITY pref.SettingDialog "Setting Dialogue">
+<!ENTITY pref.Server "Server">
+<!ENTITY pref.usehttps "Use https://">
+<!ENTITY pref.UserName "User Name">
+<!ENTITY pref.Password "Password">
+<!ENTITY pref.DeviceId "Device Id">
+<!ENTITY pref.UseProvisioning "Use Provisioning">
+<!ENTITY pref.autotime "Auto Sync time in minutes">
+<!ENTITY pref.SyncAdddressbook "Sync Adddressbook">
+<!ENTITY pref.Reset "Reset">
+<!ENTITY pref.Caution "Caution! Will remove all sync information and download/upload everything.">
+<!ENTITY pref.never "0 for never">
+<!ENTITY pref.blank "Enter unique value or leave blank to auto generate"> 
+<!ENTITY pref.AddressBookOptions "AddressBook Options">
+<!ENTITY pref.birthday "Send Birthday Information">
+
+<!ENTITY pref.LocalAddressBook "Local Address Book">
+<!ENTITY pref.About "Notes Etc.">
+```
